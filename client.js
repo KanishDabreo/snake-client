@@ -13,6 +13,7 @@ const connect = function () {
   const moveDown = "Move: down";
   const moveLeft = "Move: left";
   const moveRight = "Move: right";
+  const msg = "Say: Yoo!";
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
@@ -28,7 +29,11 @@ const connect = function () {
     setTimeout(() => conn.write(`${moveLeft}`), 1030);
     setTimeout(() => conn.write(`${moveRight}`), 1400);
   })
-  
+  conn.on('connect', () => {
+    console.log("Successfully msgd your classmates");
+    //conn.write(`${msg}`);
+    setTimeout(() => conn.write(`${msg}`), 5000);
+  })
   return conn;
 };
 
