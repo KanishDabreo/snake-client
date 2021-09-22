@@ -9,18 +9,26 @@ const connect = function () {
     // PORT number here,
   });
   const name = "Name: KAN";
+  const moveUp = "Move: up";
+  const moveDown = "Move: down";
+  const moveLeft = "Move: left";
+  const moveRight = "Move: right";
   // interpret incoming data as text
   conn.setEncoding("utf8");
-  
-  conn.write(`${name} has connected!!!`);
-  
+
   //below adjusts the connect function to handle incoming data
   conn.on('data', (data) => {
     console.log(data);
   })
   conn.on('connect', () => {
     console.log("Successfully connected to game server");
-  })  
+    conn.write(`${name}`);
+    setTimeout(() => conn.write(`${moveUp}`), 1000);
+    setTimeout(() => conn.write(`${moveDown}`), 1020);
+    setTimeout(() => conn.write(`${moveLeft}`), 1030);
+    setTimeout(() => conn.write(`${moveRight}`), 1400);
+  })
+  
   return conn;
 };
 
