@@ -1,19 +1,14 @@
 const net = require("net");
+const { IP, PORT, name, moveUp, moveDown, moveLeft, moveRight, msg} = require("./constants");
 
 // establishes a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
-    host: '135.23.223.133',
+    host: IP,
     // IP address here, as a string
-    port: 50542, 
+    port: PORT, 
     // PORT number here,
   });
-  const name = "Name: KAN";
-  const moveUp = "Move: up";
-  const moveDown = "Move: down";
-  const moveLeft = "Move: left";
-  const moveRight = "Move: right";
-  const msg = "Say: Yoo!";
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
